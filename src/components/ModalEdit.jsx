@@ -1,0 +1,180 @@
+import {
+    Modal,
+    ModalContent
+} from "@nextui-org/react";
+import { useEffect, useState } from "react";
+
+const ModalEdit = ({ isOpen, onClose, mode = "add", initialData = null, onSave }) => {
+
+    const [nama, setNama] = useState("");
+    const [harga, setHarga] = useState("");
+    const [deskripsi, setDeskripsi] = useState("");
+    const [jumlah, setJumlah] = useState("");
+
+    const [gambar, setGambar] = useState(null);     
+    const [preview, setPreview] = useState(null);   
+
+    useEffect(() => {
+        if (mode === "edit" && initialData) {
+    
+            setNama(initialData.nama_produk || "");
+            setHarga(initialData.harga_produk || "");
+            setDeskripsi(initialData.deskripsi_produk || "");
+            setJumlah(initialData.jumlah_produk || "");
+            if (initialData.gambar_produk) {
+                setPreview(initialData.gambar_produk);
+            }
+    
+        } else {
+            setNama("");
+            setHarga("");
+            setDeskripsi("");
+            setJumlah("");
+            setGambar(null);
+            setPreview(null);
+        }
+    }, [isOpen, mode, initialData]);
+
+    const handleSubmit = () => {
+        const formData = new FormData();
+
+        // Sesuaikan nama field dengan backend Laravel kamu!
+        formData.append("nama_produk", nama);
+        formData.append("harga_produk", harga);
+        formData.append("deskripsi_produk", deskripsi);
+        formData.append("jumlah_produk", jumlah);
+
+        if (gambar) {
+            formData.append("gambar_produk", gambar);
+        }
+
+        onSave(formData);
+        onClose();
+    };
+
+
+    return (
+        <Modal
+            isOpen={isOpen}
+            onClose={onClose}
+            backdrop="blur"
+            size="lg"
+            hideCloseButton
+            classNames={{
+                wrapper: "items-center justify-center",
+                base: "bg-[#e6e6e6] p-8 rounded-3xl shadow-xl"
+            }}
+        >
+            <ModalContent>
+            <button
+                onClick={onClose}
+                className="
+                    absolute bg-transparent
+                    top-3 right-3
+                    sm:top-4 sm:right-4
+                    md:top-5 md:right-5
+                    text-base md:text-sm
+                    hover:text-red-600 transition
+                "
+            >
+                ✕
+            </button>
+
+                <div className="flex flex-col items-center w-full pt-6 sm:pt-8">
+                    <div className="w-[350px] h-[200px] bg-white border border-gray-300 rounded-lg flex items-center justify-center mb-3 overflow-hidden">
+                        {preview ? (
+                            <img
+                                src={preview}
+                                alt="preview"
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <span className="text-gray-500 text-lg font-medium">Gambar</span>
+                        )}
+                    </div>
+                    <label className="w-[350px]">
+                        <div className="cursor-pointer bg-blue-500 text-white py-2 rounded-lg text-center text-sm hover:bg-gray-800 transition">
+                            Upload Gambar
+                        </div>
+
+                        <input
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            className="hidden"
+                            onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (!file) return;
+                                const allowedTypes = ["image/png", "image/jpeg"];
+                                if (!allowedTypes.includes(file.type)) {
+                                    alert("Format gambar harus PNG atau JPG/JPEG");
+                                    e.target.value = "";
+                                    return;
+                                }
+                                const maxSize = 1 * 1024 * 1024;
+                                if (file.size > maxSize) {
+                                    alert("Ukuran gambar maksimal 1 MB");
+                                    e.target.value = "";
+                                    return;
+                                }
+
+                                setGambar(file);
+                                setPreview(URL.createObjectURL(file));
+                            }}
+                        />
+                    </label>
+
+                    <div className="w-[350px] flex flex-col gap-5 mt-6">
+
+                        <div>
+                            <label className="text-md">Harga</label>
+                            <input
+                                type="number"
+                                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md mt-1"
+                                value={harga}
+                                onChange={(e) => setHarga(e.target.value)}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="text-md">Nama Produk</label>
+                            <input
+                                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md mt-1"
+                                value={nama}
+                                onChange={(e) => setNama(e.target.value)}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="text-md">Deskripsi</label>
+                            <textarea
+                                rows={2}
+                                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md mt-1"
+                                value={deskripsi}
+                                onChange={(e) => setDeskripsi(e.target.value)}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="text-md">Jumlah</label>
+                            <input
+                                type="number"
+                                className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md mt-1"
+                                value={jumlah}
+                                onChange={(e) => setJumlah(e.target.value)}
+                            />
+                        </div>
+                        <button
+                            onClick={handleSubmit}
+                            className="w-full mt-3 bg-blue-500 text-white py-3 rounded-lg font-semi text-md hover:bg-gray-800 transition"
+                        >
+                            {mode === "add" ? "Tambah" : "Simpan"}
+                        </button>
+
+                    </div>
+                </div>
+            </ModalContent>
+        </Modal>
+    );
+};
+
+export default ModalEdit;
