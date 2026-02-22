@@ -116,7 +116,7 @@ const Catalogpage = () => {
             }
 
             const res = await axios.get(
-                "http://bangunan.fremwe.my.id/api/produk",
+                "https://bangunan.fremwe.my.id/api/produk",
                 { params }
             );
 

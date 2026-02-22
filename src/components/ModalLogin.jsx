@@ -40,7 +40,7 @@ const LoginModal = ({ open, onClose }) => {
 
         try {
             const response = await axios.post(
-                "http://bangunan.fremwe.my.id/api/auth/login",
+                "https://bangunan.fremwe.my.id/api/auth/login",
                 {
                     email: email,
                     password: password

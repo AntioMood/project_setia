@@ -59,7 +59,7 @@ const Adminpage = () => {
         try {
             setLoading(true);
 
-            const res = await axios.get("http://bangunan.fremwe.my.id/api/produk", {
+            const res = await axios.get("https://bangunan.fremwe.my.id/api/produk", {
                 params: {
                     nama_produk: debouncedSearch,
                     page: currentPage
@@ -97,8 +97,8 @@ const Adminpage = () => {
 
         const isAdd = editMode === "add";
         const url = isAdd
-            ? "http://bangunan.fremwe.my.id/api/produk"
-            : `http://bangunan.fremwe.my.id/api/produk/${selectedItem.id_produk}`;
+            ? "https://bangunan.fremwe.my.id/api/produk"
+            : `https://bangunan.fremwe.my.id/api/produk/${selectedItem.id_produk}`;
 
         const confirmResult = await Swal.fire({
             title: isAdd ? "Anda yakin ingin menyimpan produk?" : "Anda yakin ingin mengedit produk?",
@@ -164,7 +164,7 @@ const Adminpage = () => {
         if (!result.isConfirmed) return;
 
         try {
-            await axios.delete(`http://bangunan.fremwe.my.id/api/produk/${id_produk}`, {
+            await axios.delete(`https://bangunan.fremwe.my.id/api/produk/${id_produk}`, {
                 headers: {
                     Accept: "application/json",
                     Authorization: `Bearer ${token}`,
