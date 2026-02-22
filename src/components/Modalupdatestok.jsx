@@ -35,7 +35,7 @@ const ModalUpdateStok = ({ isOpen, onClose, product, onSuccess }) => {
         }
 
         try {
-            await axios.post(
+            await axios.patch(
                 `https://bangunan.fremwe.my.id/api/produk/${product.id_produk}`,
                 {
                     jumlah_produk: jumlah, // bisa positif atau negatif
