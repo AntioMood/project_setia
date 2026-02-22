@@ -51,8 +51,6 @@ const LoginModal = ({ open, onClose }) => {
 
             localStorage.setItem("token", token);
 
-            console.log("TOKEN DISIMPAN:", token);
-
             onClose();
             navigate("/admin");
 
