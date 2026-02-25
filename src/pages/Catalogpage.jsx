@@ -180,7 +180,7 @@ const Catalogpage = () => {
                     <CardBody className="flex flex-col items-center">
                         <ModalProduct
                             open={isProductOpen}
-                            onClose={() => setIsProductOpen(false)}
+                            onClose={() => setIsProductOpen(true)}
                             product={selectedProduct}
                         />
 
