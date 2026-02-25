@@ -20,7 +20,7 @@ const SkeletonModal = () => {
 const ModalProduct = ({ open, onClose, product }) => {
     if (!open) return null;
 
-    const { nama_produk, harga_produk, deskripsi_produk, gambar_produk } =
+    const { nama_produk, harga_produk, deskripsi_produk, gambar_produk, jumlah_produk } =
         product || {};
 
     const isLoading = !product;
@@ -95,6 +95,9 @@ const ModalProduct = ({ open, onClose, product }) => {
                         {/* DESCRIPTION */}
                         <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                             {deskripsi_produk}
+                        </p>
+                        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                            {jumlah_produk}
                         </p>
                     </div>
                 )}
