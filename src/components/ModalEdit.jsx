@@ -120,6 +120,7 @@ const ModalEdit = ({ isOpen, onClose, mode = "add", initialData = null, onSave }
                                 setGambar(file);
                                 setPreview(URL.createObjectURL(file));
                             }}
+                            required
                         />
                     </label>
 
@@ -132,6 +133,7 @@ const ModalEdit = ({ isOpen, onClose, mode = "add", initialData = null, onSave }
                                 className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md mt-1"
                                 value={harga}
                                 onChange={(e) => setHarga(e.target.value)}
+                                required
                             />
                         </div>
 
@@ -141,6 +143,7 @@ const ModalEdit = ({ isOpen, onClose, mode = "add", initialData = null, onSave }
                                 className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md mt-1"
                                 value={nama}
                                 onChange={(e) => setNama(e.target.value)}
+                                required
                             />
                         </div>
 
@@ -161,6 +164,7 @@ const ModalEdit = ({ isOpen, onClose, mode = "add", initialData = null, onSave }
                                 className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md mt-1"
                                 value={jumlah}
                                 onChange={(e) => setJumlah(e.target.value)}
+                                required
                             />
                         </div>
                         <button
