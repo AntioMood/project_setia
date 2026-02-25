@@ -57,7 +57,7 @@ const ModalEdit = ({ isOpen, onClose, mode = "add", initialData = null, onSave }
             hideCloseButton
             classNames={{
                 wrapper: "items-center justify-center",
-                base: "bg-[#e6e6e6] rounded-3xl shadow-xl"
+                base: "bg-[#e6e6e6] rounded-2xl shadow-xl"
             }}
         >
             <ModalContent
