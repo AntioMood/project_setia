@@ -89,31 +89,31 @@ const SkeletonCard = () => {
     return (
         <div
             className="
-        w-full
-        max-w-[10rem]
-        sm:max-w-[13rem]
-        lg:max-w-[15rem]
-        bg-gray-300
-        rounded-2xl
-        shadow
-        flex
-        flex-col
-        items-center
-        p-3
-        gap-2
-        animate-pulse
-      "
+                w-full
+                max-w-[10rem]
+                sm:max-w-[13rem]
+                lg:max-w-[15rem]
+                bg-gray-300
+                rounded-2xl
+                shadow
+                flex
+                flex-col
+                items-center
+                p-3
+                gap-2
+                animate-pulse
+            "
         >
             <div
                 className="
-          w-full
-          aspect-[3/4]
-          sm:aspect-[3/4]
-          md:aspect-[4/3]
-          lg:aspect-[1/1]
-          bg-gray-400
-          rounded-md
-        "
+                    w-full
+                    aspect-[3/4]
+                    sm:aspect-[3/4]
+                    md:aspect-[4/3]
+                    lg:aspect-[1/1]
+                    bg-gray-400
+                    rounded-md
+                "
             ></div>
 
             <div className="w-3/4 h-3 bg-gray-400 rounded mt-2"></div>
@@ -187,18 +187,18 @@ const Catalogpage = () => {
                         {/* GRID */}
                         <div
                             className="
-                grid
-                grid-cols-2
-                sm:grid-cols-2
-                md:grid-cols-3
-                lg:grid-cols-4
-                xl:grid-cols-5
-                gap-6 sm:gap-8 lg:gap-12
-                mt-4
-                place-items-center
-                font-montserratAlt
-                font-medium
-              "
+                                grid
+                                grid-cols-2
+                                sm:grid-cols-2
+                                md:grid-cols-3
+                                lg:grid-cols-4
+                                xl:grid-cols-5
+                                gap-6 sm:gap-8 lg:gap-12
+                                mt-4
+                                place-items-center
+                                font-montserratAlt
+                                font-medium
+                            "
                         >
                             {loading
                                 ? Array.from({ length: 10 }).map((_, i) => <SkeletonCard key={i} />)
@@ -210,35 +210,35 @@ const Catalogpage = () => {
                                             setIsProductOpen(true);
                                         }}
                                         className="
-                        cursor-pointer
-                        w-full
-                        max-w-[10rem]
-                        sm:max-w-[13rem]
-                        lg:max-w-[15rem]
-                        bg-[#7a7a7a]
-                        rounded-2xl
-                        shadow-lg
-                        flex
-                        flex-col
-                        items-center
-                        p-3
-                        gap-2
-                      "
+                                            cursor-pointer
+                                            w-full
+                                            max-w-[10rem]
+                                            sm:max-w-[13rem]
+                                            lg:max-w-[15rem]
+                                            bg-[#7a7a7a]
+                                            rounded-2xl
+                                            shadow-lg
+                                            flex
+                                            flex-col
+                                            items-center
+                                            p-3
+                                            gap-2
+                                        "
                                     >
                                         <div
                                             className="
-                          w-full
-                          aspect-[3/4]
-                          sm:aspect-[3/4]
-                          md:aspect-[4/3]
-                          lg:aspect-[1/1]
-                          bg-white
-                          rounded-md
-                          overflow-hidden
-                          flex
-                          items-center
-                          justify-center
-                        "
+                                                w-full
+                                                aspect-[3/4]
+                                                sm:aspect-[3/4]
+                                                md:aspect-[4/3]
+                                                lg:aspect-[1/1]
+                                                bg-white
+                                                rounded-md
+                                                overflow-hidden
+                                                flex
+                                                items-center
+                                                justify-center
+                                            "
                                         >
                                             <img
                                                 src={item.gambar_produk}
@@ -251,7 +251,7 @@ const Catalogpage = () => {
                                             {item.nama_produk}
                                         </p>
                                         <p className="text-white text-xs sm:text-sm mt-auto">
-                                            Rp {item.harga_produk}
+                                            Rp {Number(item.harga_produk).toLocaleString("id-ID")}
                                         </p>
                                     </div>
                                 ))}
