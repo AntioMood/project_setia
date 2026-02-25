@@ -63,7 +63,6 @@ const ModalProduct = ({ open, onClose, product }) => {
                     <SkeletonModal />
                 ) : (
                     <div className="p-4 space-y-4">
-                        {/* IMAGE */}
                         <div
                             className="
                                 w-full
@@ -82,7 +81,6 @@ const ModalProduct = ({ open, onClose, product }) => {
                             />
                         </div>
 
-                        {/* TITLE & PRICE */}
                         <div>
                             <h3 className="text-base sm:text-lg font-semibold">
                                 {nama_produk}
@@ -92,12 +90,11 @@ const ModalProduct = ({ open, onClose, product }) => {
                             </p>
                         </div>
 
-                        {/* DESCRIPTION */}
                         <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                            {deskripsi_produk}
+                            Stok Barang : {jumlah_produk}
                         </p>
                         <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                            {jumlah_produk}
+                            {deskripsi_produk}
                         </p>
                     </div>
                 )}
